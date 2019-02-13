@@ -3,7 +3,7 @@ import Inventory from './Inventory';
 
 const App = () => (
   <Fragment>
-    <p>Watto’s Spaceship Emporium</p>
+    <h1>Watto’s Spaceship Emporium</h1>
     <Inventory />
   </Fragment>
 );
