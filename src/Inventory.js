@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
 import ShipCard from './ShipCard';
+
+const CardDeck = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+`;
 
 const Inventory = () => {
   const [ships, setShips] = useState([]);
@@ -26,7 +33,13 @@ const Inventory = () => {
     }
   };
 
-  return (ships && ships.map(ship => (<ShipCard ship={ship} key={ship.id} />)));
+  return (
+    <CardDeck>
+      {
+        ships && ships.map(ship => (<ShipCard ship={ship} key={ship.id} />))
+      }
+    </CardDeck>
+  );
 };
 
 export default Inventory;

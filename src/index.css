@@ -1,0 +1,29 @@
+@font-face {
+  font-family: "aurebesh";
+  src: url("./assets/aurebesh.otf");
+}
+
+@font-face {
+  font-family: "mandalorian";
+  src: url("./assets/mandalorian.woff2");
+}
+
+@font-face {
+  font-family: "darkkatarn";
+  src: url("./assets/darkkatarn.woff2");
+}
+
+html body {
+  /* These colors are from the averaged color palette of Episode IV */
+  --new-hope-silver: #dcdce5;
+  --new-hope-dust: #a7a3a2;
+  --new-hope-blue: #2a8dce;
+  --new-hope-tan: #76676c;
+  --new-hope-brown: #3e3739;
+  --new-hope-black: #130c0e;
+
+  margin: 0;
+  padding: 0;
+  color: var(--new-hope-brown);
+  background-color: var(--new-hope-silver);
+}
