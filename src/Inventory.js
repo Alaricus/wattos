@@ -1,45 +1,28 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import ShipCard from './ShipCard';
 
-const CardDeck = styled.div`
+const Cards = styled.div`
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
+  background-color: var(--new-hope-dust);
+  padding: 1rem 0 0 0;
+
+  @media only screen and (min-width: 768px) {
+    padding: 3rem 1rem 0 1rem;
+    width: 48rem;
+    margin: 0 auto;
+    border-radius: 0 0 5px 5px;
+  }
 `;
 
-const Inventory = () => {
-  const [ships, setShips] = useState([]);
-
-  useEffect(() => {
-    getShipData();
-  }, []);
-
-  const getShipData = async () => {
-    try {
-      const response = await fetch('https://demo7475333.mockable.io/spaceships');
-      if (response.ok) {
-        const result = await response.json();
-        const stock = result.products.reduce((acc, cur) => {
-          const id = cur.name.split(' ').join('-').toLowerCase();
-          const ship = cur;
-          ship.id = id;
-          return [...acc, ship];
-        }, []);
-        setShips(stock); // Don't like this, but useEffect warns when async.
-      }
-    } catch (err) {
-      console.log(`Error fetching ship data: ${err}`);
+const Inventory = ({ ships }) => (
+  <Cards>
+    {
+      ships && ships.map(ship => (<ShipCard ship={ship} key={ship.id} />))
     }
-  };
-
-  return (
-    <CardDeck>
-      {
-        ships && ships.map(ship => (<ShipCard ship={ship} key={ship.id} />))
-      }
-    </CardDeck>
-  );
-};
+  </Cards>
+);
 
 export default Inventory;

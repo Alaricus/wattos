@@ -25,5 +25,11 @@ html body {
   margin: 0;
   padding: 0;
   color: var(--new-hope-brown);
-  background-color: var(--new-hope-silver);
+  background-color: var(--new-hope-black);
+  text-align: center;
+}
+
+ul li:nth-child(even) {
+  color: var(--new-hope-silver);
+  background-color: var(--new-hope-tan);
 }

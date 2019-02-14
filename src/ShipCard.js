@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import ShipInfo from './ShipInfo';
 import placeholderImage from './assets/placeholder.jpg';
 
 const Card = styled.div`
@@ -8,16 +8,7 @@ const Card = styled.div`
   background-color: var(--new-hope-silver);
   width: 100%;
   height: 50%;
-  margin: 0 0.5rem 1rem 0.5rem;
   text-align: center;
-  box-shadow: 0 4px 8px 0 var(--new-hope-brown), 0 6px 20px 0 var(--new-hope-brown);
-  cursor: pointer;
-
-  @media only screen and (min-width: 768px) {
-    width: 17rem;
-
-    margin: 0 1rem 3rem 1rem;
-  }
 `;
 
 const ModelName = styled.p`
@@ -34,20 +25,28 @@ const Thumbnail = styled.img`
   width: 100%;
 `;
 
+const StyledLink = styled(Link)`
+  background-color: var(--new-hope-silver);
+  width: 100%;
+  box-shadow: 0 4px 8px 0 var(--new-hope-brown), 0 6px 20px 0 var(--new-hope-brown);
+  margin: 1rem 0 1rem;
+
+  @media only screen and (min-width: 768px) {
+    width: 17rem;
+    margin: 0 1rem 3rem 1rem;
+  }
+`;
+
 const ShipCard = ({ ship }) => {
-  const [showInfo, setShowInfo] = useState(false);
   const { name } = ship;
 
-  const handleClick = () => {
-    setShowInfo(!showInfo);
-  };
-
   return (
-    <Card onClick={() => { handleClick(); }} >
-      <Thumbnail src={placeholderImage} alt={name} />
-      <ModelName>{name}</ModelName>
-      { showInfo && <ShipInfo ship={ship} /> }
-    </Card>
+    <StyledLink to={`/ship/${ship.id}`}>
+      <Card>
+        <Thumbnail src={placeholderImage} alt={name} />
+        <ModelName>{name}</ModelName>
+      </Card>
+    </StyledLink>
   );
 };
 
