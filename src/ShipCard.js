@@ -9,6 +9,10 @@ const Card = styled.div`
   width: 100%;
   height: 50%;
   text-align: center;
+
+  @media only screen and (min-width: 768px) {
+    height: 11rem;
+  }
 `;
 
 const ModelName = styled.p`
@@ -16,7 +20,7 @@ const ModelName = styled.p`
   overflow: hidden;
 
   @media only screen and (min-width: 768px) {
-    margin: 0.25rem;
+    margin: 0.5rem auto;
     font-size: 0.9rem;
   }
 `;
@@ -28,8 +32,9 @@ const Thumbnail = styled.img`
 const StyledLink = styled(Link)`
   background-color: var(--new-hope-silver);
   width: 100%;
-  box-shadow: 0 4px 8px 0 var(--new-hope-brown), 0 6px 20px 0 var(--new-hope-brown);
+  box-shadow: 0 2px 8px 0 var(--new-hope-tan);
   margin: 1rem 0 1rem;
+  text-decoration: none;
 
   @media only screen and (min-width: 768px) {
     width: 17rem;

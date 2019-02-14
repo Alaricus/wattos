@@ -47,13 +47,15 @@ const App = () => {
 
   const Page = styled.div`
     display: inline-block;
+    box-sizing: border-box;
     font-family: ${language};
     text-align: center;
     background-color: var(--new-hope-silver);
     border-radius: 0 0 5px 5px;
 
     @media only screen and (min-width: 768px) {
-      width: 50rem;
+      width: 100%;
+      max-width: 60rem;
     }
   `;
 
