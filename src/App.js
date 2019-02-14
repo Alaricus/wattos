@@ -7,8 +7,9 @@ import ShipInfo from './ShipInfo';
 
 const Title = styled.h1`
   font-size: 2.5rem;
-  color: var(--new-hope-black);
-  text-shadow: -1px 0 var(--new-hope-blue),
+  color: var(--new-hope-silver);
+  text-shadow:
+    -1px 0 var(--new-hope-blue),
     0 1px var(--new-hope-blue),
     1px 0 var(--new-hope-blue),
     0 -1px var(--new-hope-blue);
@@ -50,12 +51,14 @@ const App = () => {
     box-sizing: border-box;
     font-family: ${language};
     text-align: center;
-    background-color: var(--new-hope-silver);
-    border-radius: 0 0 5px 5px;
+    background-color: #000000;
+    border: 1px solid var(--new-hope-tan);
+    border-radius: 5px;
 
     @media only screen and (min-width: 768px) {
       width: 100%;
       max-width: 60rem;
+      margin-top: 2rem;
     }
   `;
 

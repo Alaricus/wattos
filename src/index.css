@@ -26,6 +26,8 @@ html body {
   padding: 0;
   color: var(--new-hope-brown);
   background-color: var(--new-hope-black);
+  background-image: url('./assets/starfield.jpg');
+  background-size: contain;
   text-align: center;
 }
 

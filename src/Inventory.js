@@ -7,7 +7,7 @@ const Cards = styled.div`
   box-sizing: border-box;
   flex-flow: row wrap;
   justify-content: center;
-  background-color: var(--new-hope-dust);
+  background-color: #000000;
   padding: 1rem 0 0 0;
 
   @media only screen and (min-width: 768px) {

@@ -16,7 +16,7 @@ const LangButton = styled.button`
 const Language = ({ handleClick, current }) => {
   const Aurebesh = styled(LangButton)`
     font-family: "aurebesh";
-    border-radius: 5px 0 0 0;
+    border-radius: 5px 0 0 5px;
     background-color: ${current === 'aurebesh' && 'var(--new-hope-blue)'};
   `;
 
@@ -32,7 +32,7 @@ const Language = ({ handleClick, current }) => {
 
   const English = styled(LangButton)`
     font-family: sans-serif;
-    border-radius: 0 5px 0 0;
+    border-radius: 0 5px 5px 0;
     background-color: ${current === 'sans-serif' && 'var(--new-hope-blue)'};
   `;
 

@@ -4,20 +4,28 @@ import styled from 'styled-components';
 import placeholderImage from './assets/placeholder.jpg';
 
 const Card = styled.div`
-  border-radius: 0 0 5px 5px;
-  background-color: var(--new-hope-silver);
-  width: 100%;
-  height: 50%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--new-hope-blue);
+  box-shadow: inset 0 0 10px 3px var(--new-hope-blue);
+  height: 66vw;
   text-align: center;
 
   @media only screen and (min-width: 768px) {
+    width: 100%;
     height: 11rem;
   }
 `;
 
-const ModelName = styled.p`
+const ModelName = styled.div`
+  box-shadow: inset 0 0 10px 3px var(--new-hope-blue);
+  min-height: 2.1rem;
+`;
+
+const Text = styled.p`
   white-space: nowrap;
   overflow: hidden;
+  color: var(--new-hope-dust);
 
   @media only screen and (min-width: 768px) {
     margin: 0.5rem auto;
@@ -25,14 +33,22 @@ const ModelName = styled.p`
   }
 `;
 
-const Thumbnail = styled.img`
-  width: 100%;
+const Thumbnail = styled.div`
+  flex: 1;
+  box-shadow: inset 0 0 10px 3px var(--new-hope-blue);
+  background-image: url(${placeholderImage});
+  background-position: center;
+  background-size: cover;
+
+  @media only screen and (min-width: 768px) {
+    background-size: contain;
+  }
 `;
 
 const StyledLink = styled(Link)`
-  background-color: var(--new-hope-silver);
+  border-radius: 0 0 5px 5px;
   width: 100%;
-  box-shadow: 0 2px 8px 0 var(--new-hope-tan);
+  box-shadow: 2px 0 20px 5px var(--new-hope-blue);
   margin: 1rem 0 1rem;
   text-decoration: none;
 
@@ -48,8 +64,10 @@ const ShipCard = ({ ship }) => {
   return (
     <StyledLink to={`/ship/${ship.id}`}>
       <Card>
-        <Thumbnail src={placeholderImage} alt={name} />
-        <ModelName>{name}</ModelName>
+        <Thumbnail />
+        <ModelName>
+          <Text>{name}</Text>
+        </ModelName>
       </Card>
     </StyledLink>
   );
