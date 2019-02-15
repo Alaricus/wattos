@@ -49,11 +49,11 @@ const Thumbnail = styled.div`
 const StyledLink = styled(Link)`
   border-radius: 5px;
   width: 100%;
-  box-shadow: 2px 0 20px 5px var(--sw-blue);
   margin: 1rem 0 1rem;
   text-decoration: none;
 
   @media only screen and (min-width: 768px) {
+    box-shadow: 2px 0 20px 5px var(--sw-blue);
     width: 17rem;
     margin: 0 1rem 3rem 1rem;
   }

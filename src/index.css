@@ -13,6 +13,11 @@
   src: url("./assets/darkkatarn.woff2");
 }
 
+@font-face {
+  font-family: "titillium";
+  src: url("./assets/titillium.woff2");
+}
+
 body {
   /* These colors are from the averaged color palette of Episode IV */
   --sw-silver: #dcdce5;

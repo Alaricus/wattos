@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import ShipCard from './ShipCard';
 
+
 const Cards = styled.div`
   display: flex;
   box-sizing: border-box;

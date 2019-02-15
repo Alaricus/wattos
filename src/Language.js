@@ -1,5 +1,10 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import styled from 'styled-components';
+
+const Wrapper = styled.div`
+  display: inline-block;
+  box-shadow: 0 0 20px 5px #000000;
+`;
 
 const LangButton = styled.button`
   font-size: 1rem;
@@ -32,13 +37,14 @@ const Language = ({ handleClick, current }) => {
   `;
 
   const English = styled(LangButton)`
-    font-family: sans-serif;
+    font-family: titillium;
     border-radius: 0 5px 5px 0;
-    background-color: ${current === 'sans-serif' && 'var(--sw-blue)'};
+    background-color: ${current === 'titillium' && 'var(--sw-blue)'};
   `;
 
   return (
-    <Fragment>
+    <div>
+    <Wrapper>
       <Aurebesh
         type="button"
         onClick={handleClick}
@@ -48,8 +54,9 @@ const Language = ({ handleClick, current }) => {
       </Aurebesh>
       <Mandalorian onClick={handleClick} data-lang="mandalorian">Mandalorian</Mandalorian>
       <Darkkatarn onClick={handleClick} data-lang="darkkatarn">Katarn</Darkkatarn>
-      <English onClick={handleClick} data-lang="sans-serif">English</English>
-    </Fragment>
+      <English onClick={handleClick} data-lang="titillium">English</English>
+    </Wrapper>
+    </div>
   );
 };
 

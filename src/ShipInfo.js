@@ -49,7 +49,7 @@ const Details = styled.div`
 const Purchase = styled.button`
   color: var(--sw-silver);
   background-color: var(--sw-blue);
-  font-size: 1rem;
+  font-size: 1.2rem;
   height: 3rem;
   width: 100%;
   padding: 0.1rem 0.4rem;
@@ -70,6 +70,7 @@ const Minor = styled.ul`
 
 const Aspect = styled.div`
   padding: 0.3rem;
+  text-transform: capitalize;
 
   @media only screen and (min-width: 768px) {
     display: inline-block;
@@ -80,6 +81,7 @@ const Aspect = styled.div`
 
 const Data = styled.div`
   padding: 0.3rem;
+  text-transform: capitalize;
 
   @media only screen and (min-width: 768px) {
     display: inline-block;
@@ -104,7 +106,7 @@ const ShipInfo = ({ ships, match }) => {
   if (!ship) {
     return (
       <Info>
-        <h3>This is not the ship you are looking for!</h3>
+        <h2>This is not the ship you are looking for!</h2>
       </Info>
     );
   }
@@ -114,7 +116,7 @@ const ShipInfo = ({ ships, match }) => {
 
   return (
     <Info>
-      <h3>{name}</h3>
+      <h2>{name}</h2>
       <Major>
         <Model
           title={ship.id}
