@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Page404 from './404';
 import images from './images';
 
 const Info = styled.div`
@@ -119,11 +120,7 @@ const ShipInfo = ({ ships, match }) => {
   const ship = ships.find(item => item.id === match.params.id);
 
   if (!ship) {
-    return (
-      <Info>
-        <h2>This is not the ship you are looking for!</h2>
-      </Info>
-    );
+    return <Page404 />;
   }
 
   const { name, manufacturer, class: shipClass, price, techspecs } = ship;

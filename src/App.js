@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import LanguageBar from './Language';
 import Inventory from './Inventory';
 import ShipInfo from './ShipInfo';
+import Page404 from './404';
 import splash from './assets/splash.jpg';
 
 const Header = styled.div`
@@ -113,6 +114,7 @@ const App = () => {
         <Switch>
           <Route exact path="/" render={props => <Inventory {...props} ships={ships} />} />
           <Route path="/ship/:id" render={props => <ShipInfo {...props} ships={ships} />} />
+          <Route component={Page404} />
         </Switch>
       </Page>
     </Router>
