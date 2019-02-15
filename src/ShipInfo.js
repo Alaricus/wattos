@@ -18,10 +18,22 @@ const Name = styled.h2`
 
 const Major = styled.div`
   display: flex;
+  position: relative;
   flex-direction: column;
 
   @media only screen and (min-width: 768px) {
     flex-direction: row;
+  }
+`;
+
+const Cover = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 18rem;
+
+  @media only screen and (min-width: 768px) {
+    width: 60%;
+    height: 25rem;
   }
 `;
 
@@ -30,7 +42,8 @@ const Model = styled.iframe`
   background-size: cover;
   width: 100%;
   height: 18rem;
-  background-color: var(--sw-space);
+
+  background-image: radial-gradient(var(--sw-blue) 1%, black 40%, transparent 55%);
 
   @media only screen and (min-width: 768px) {
     width: 60%;
@@ -120,6 +133,7 @@ const ShipInfo = ({ ships, match }) => {
     <Info>
       <Name>{name}</Name>
       <Major>
+        <Cover />
         <Model
           title={ship.id}
           frameBorder="0"
