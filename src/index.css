@@ -19,7 +19,6 @@
 }
 
 body {
-  /* These colors are from the averaged color palette of Episode IV */
   --sw-silver: #dcdce5;
   --sw-dust: #a7a3a2;
   --sw-blue: #2a8dce;
@@ -44,5 +43,6 @@ p {
 }
 
 @media only screen and (min-width: 768px) {
-  p { margin-bottom: 2rem; }
+  p { margin-bottom: 1rem; }
+  li { height: 2rem; }
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import images from './images';
 
 const Info = styled.div`
   padding: 0.5rem 0;
@@ -9,6 +10,10 @@ const Info = styled.div`
     margin: 0 auto;
     border-radius: 0 0 5px 5px;
   }
+`;
+
+const Name = styled.h2`
+  text-transform: capitalize;
 `;
 
 const Major = styled.div`
@@ -34,6 +39,16 @@ const Model = styled.iframe`
   }
 `;
 
+const Picture = styled.img`
+  display: none;
+
+  @media only screen and (min-width: 768px) {
+    display: block;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+`;
+
 const Details = styled.div`
   flex: 1;
   padding: 0 1rem;
@@ -56,10 +71,7 @@ const Purchase = styled.button`
   border: none;
   border-radius: 5px;
   font-family: inherit;
-
-  @media only screen and (min-width: 768px) {
-    width: 9rem;
-  }
+  margin-top: 1rem;
 `;
 
 const Minor = styled.ul`
@@ -92,16 +104,6 @@ const Data = styled.div`
 
 const ShipInfo = ({ ships, match }) => {
   const ship = ships.find(item => item.id === match.params.id);
-  const id3D = {
-    'twin-ion-engine-starfighter': 'QGbBq',
-    't-65-x-wing-starfighter': 'HBhDd',
-    'y-wing-starfighter': 'e1bbc',
-    'yt-1300-light-freighter': 'FLfkh',
-    'alpha-class-xg-1-star-wing': 'uksPm',
-    'lambda-class-t-4a-shuttle': 'rdDEP',
-    'rz-1-a-wing-interceptor': 'LaEdm',
-    'b-wing-heavy-assault-starfighter': 'yqoE0',
-  };
 
   if (!ship) {
     return (
@@ -116,15 +118,16 @@ const ShipInfo = ({ ships, match }) => {
 
   return (
     <Info>
-      <h2>{name}</h2>
+      <Name>{name}</Name>
       <Major>
         <Model
           title={ship.id}
           frameBorder="0"
           seamless
-          src={`https://p3d.in/e/${id3D[ship.id]}+spin+load+bg-none+nopan+nozoom+norotate+controls,border,loader-hidden`}
+          src={`https://p3d.in/e/${ship.id3d}+spin+load+bg-none+nopan+nozoom+norotate+controls,border,loader-hidden`}
         />
         <Details>
+          <Picture src={images[ship.id3d]} alt={ship.name} />
           <p>Manufacturer: {manufacturer}</p>
           <p>Class: {shipClass}</p>
           <p>Price: {price || 'Come in person for an amazing discount!'}</p>

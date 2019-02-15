@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import placeholderImage from './assets/placeholder.jpg';
+import images from './images';
 
 const Card = styled.div`
   display: flex;
@@ -28,39 +28,41 @@ const Text = styled.p`
   overflow: hidden;
   color: var(--sw-dust);
   margin: 0.5rem auto;
+  text-transform: capitalize;
 
   @media only screen and (min-width: 768px) {
     font-size: 0.9rem;
   }
 `;
 
-const Thumbnail = styled.div`
-  flex: 1;
-  box-shadow: inset 0 0 10px 3px var(--sw-blue);
-  background-image: url(${placeholderImage});
-  background-position: center;
-  background-size: cover;
-
-  @media only screen and (min-width: 768px) {
-    background-size: contain;
-  }
-`;
 
 const StyledLink = styled(Link)`
-  border-radius: 5px;
-  width: 100%;
-  margin: 1rem 0 1rem;
-  text-decoration: none;
+border-radius: 5px;
+width: 100%;
+margin: 1rem 0 1rem;
+text-decoration: none;
 
-  @media only screen and (min-width: 768px) {
-    box-shadow: 2px 0 20px 5px var(--sw-blue);
-    width: 17rem;
-    margin: 0 1rem 3rem 1rem;
-  }
+@media only screen and (min-width: 768px) {
+  box-shadow: 2px 0 10px 3px var(--sw-blue);
+  width: 17rem;
+  margin: 0 1rem 3rem 1rem;
+}
 `;
 
 const ShipCard = ({ ship }) => {
   const { name } = ship;
+
+  const Thumbnail = styled.div`
+    flex: 1;
+    box-shadow: inset 0 0 10px 3px var(--sw-blue);
+    background-image: url(${images[ship.id3d]});
+    background-position: center;
+    background-size: cover;
+
+    @media only screen and (min-width: 768px) {
+      background-size: contain;
+    }
+  `;
 
   return (
     <StyledLink to={`/ship/${ship.id}`}>

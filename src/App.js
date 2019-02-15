@@ -48,6 +48,16 @@ const Title = styled.h1`
 const App = () => {
   const [language, setLanguage] = useState('aurebesh');
   const [ships, setShips] = useState([]);
+  const id3D = {
+    'twin-ion-engine-starfighter': 'QGbBq',
+    't-65-x-wing-starfighter': 'HBhDd',
+    'y-wing-starfighter': 'e1bbc',
+    'yt-1300-light-freighter': 'FLfkh',
+    'alpha-class-xg-1-star-wing': 'uksPm',
+    'lambda-class-t-4a-shuttle': 'rdDEP',
+    'rz-1-a-wing-interceptor': 'LaEdm',
+    'b-wing-heavy-assault-starfighter': 'yqoE0',
+  };
 
   useEffect(() => {
     getShipData();
@@ -62,6 +72,7 @@ const App = () => {
           const id = cur.name.split(' ').join('-').toLowerCase();
           const ship = cur;
           ship.id = id;
+          ship.id3d = id3D[id];
           return [...acc, ship];
         }, []);
         setShips(stock);
