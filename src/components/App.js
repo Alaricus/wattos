@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import styled from 'styled-components';
 import LanguageBar from './Language';
+import Status from './Status';
 import Inventory from './Inventory';
 import ShipInfo from './ShipInfo';
-import Page404 from './404';
-import splash from './assets/splash.jpg';
+import splash from '../assets/splash.jpg';
 
 const Header = styled.div`
   display: flex;
@@ -17,7 +17,7 @@ const Header = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   border-radius: 5px;
-  box-shadow: inset 0 -10px 20px 0 #000000;
+  box-shadow: inset 0 -10px 20px 3px var(--sw-space);
 
   @media only screen and (min-width: 768px) {
     height: 29.7rem;
@@ -49,6 +49,7 @@ const Title = styled.h1`
 const App = () => {
   const [language, setLanguage] = useState('aurebesh');
   const [ships, setShips] = useState([]);
+  const [status, setStatus] = useState('loading');
   const id3D = {
     'twin-ion-engine-starfighter': 'QGbBq',
     't-65-x-wing-starfighter': 'HBhDd',
@@ -77,9 +78,10 @@ const App = () => {
           return [...acc, ship];
         }, []);
         setShips(stock);
+        setStatus('loaded')
       }
     } catch (err) {
-      console.log(`Error fetching ship data: ${err}`);
+      setStatus('failed');
     }
   };
 
@@ -90,6 +92,7 @@ const App = () => {
     text-align: center;
     background-color: var(--sw-space);
     width: 100%;
+    min-height: 90vh;
 
     @media only screen and (min-width: 768px) {
       max-width: 60rem;
@@ -98,6 +101,22 @@ const App = () => {
       border-radius: 5px;
     }
   `;
+
+  let content = <Status type={status} />;
+
+  if (status === 'loaded') {
+    content = (
+      <Switch>
+        <Route exact path="/" render={props => <Inventory {...props} ships={ships} />} />
+        <Route path="/ship/:id" render={props => <ShipInfo {...props} ships={ships} />} />
+        <Route component={Status} />
+      </Switch>
+    );
+  }
+
+  if (status === 'failed') {
+    content = <Status type={status} />;
+  }
 
   const changeLanguage = (e) => {
     e.preventDefault();
@@ -111,11 +130,7 @@ const App = () => {
           <Title>Watto’s Spaceship Emporium</Title>
           <LanguageBar handleClick={changeLanguage} current={language} />
         </Header>
-        <Switch>
-          <Route exact path="/" render={props => <Inventory {...props} ships={ships} />} />
-          <Route path="/ship/:id" render={props => <ShipInfo {...props} ships={ships} />} />
-          <Route component={Page404} />
-        </Switch>
+        { content }
       </Page>
     </Router>
   );

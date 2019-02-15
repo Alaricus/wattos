@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import Page404 from './404';
-import images from './images';
+import Status from './Status';
+import images from '../images';
 
 const Info = styled.div`
   padding: 0.5rem 0;
@@ -44,7 +44,7 @@ const Model = styled.iframe`
   width: 100%;
   height: 18rem;
 
-  background-image: radial-gradient(var(--sw-blue) 1%, black 40%, transparent 55%);
+  background-image: radial-gradient(var(--sw-blue) 1%, var(--sw-space) 40%, transparent 55%);
 
   @media only screen and (min-width: 768px) {
     width: 60%;
@@ -120,7 +120,7 @@ const ShipInfo = ({ ships, match }) => {
   const ship = ships.find(item => item.id === match.params.id);
 
   if (!ship) {
-    return <Page404 />;
+    return <Status />;
   }
 
   const { name, manufacturer, class: shipClass, price, techspecs } = ship;
