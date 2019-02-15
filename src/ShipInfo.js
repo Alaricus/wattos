@@ -1,45 +1,80 @@
 import React from 'react';
 import styled from 'styled-components';
-import space from './assets/space.jpg';
 
 const Info = styled.div`
-  background-color: var(--new-hope-dust);
   padding: 0.5rem 0;
 
   @media only screen and (min-width: 768px) {
     padding: 1rem;
-    width: 48rem;
     margin: 0 auto;
     border-radius: 0 0 5px 5px;
   }
 `;
 
+const Major = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  @media only screen and (min-width: 768px) {
+    flex-direction: row;
+  }
+`;
+
 const Model = styled.iframe`
   display: block;
-  background-image: url(${space});
   background-size: cover;
   width: 100%;
   height: 18rem;
+  background-color: var(--sw-space);
 
   @media only screen and (min-width: 768px) {
+    width: 60%;
     height: 25rem;
     border-radius: 5px;
   }
 `;
 
-const Details = styled.ul`
+const Details = styled.div`
+  flex: 1;
+  padding: 0 1rem;
+  color: var(--sw-silver);
+  text-align: center;
+
+  @media only screen and (min-width: 768px) {
+    text-align: left;
+    margin-top: 3rem;
+  }
+`;
+
+const Purchase = styled.button`
+  color: var(--sw-silver);
+  background-color: var(--sw-blue);
+  font-size: 1rem;
+  height: 3rem;
+  width: 100%;
+  padding: 0.1rem 0.4rem;
+  border: none;
+  border-radius: 5px;
+  font-family: inherit;
+
+  @media only screen and (min-width: 768px) {
+    width: 9rem;
+  }
+`;
+
+const Minor = styled.ul`
   text-align: left;
   list-style-type: none;
   padding: 0.5rem;
 `;
 
 const Aspect = styled.div`
-  font-weight: bold;
   padding: 0.3rem;
 
   @media only screen and (min-width: 768px) {
     display: inline-block;
-    width: 15%;
+    padding: 0.3rem 0 0.3rem 0.4rem;
+    width: 18%;
   }
 `;
 
@@ -80,16 +115,21 @@ const ShipInfo = ({ ships, match }) => {
   return (
     <Info>
       <h3>{name}</h3>
-      <Model
-        title={ship.id}
-        frameBorder="0"
-        seamless
-        src={`https://p3d.in/e/${id3D[ship.id]}+spin+load+bg-none+nopan+nozoom+norotate+controls,border,loader-hidden`}
-      />
-      <p>Manufacturer: {manufacturer}</p>
-      <p>Class: {shipClass}</p>
-      <p>Price: {price || 'Come in person for an amazing discount!'}</p>
-      <Details>
+      <Major>
+        <Model
+          title={ship.id}
+          frameBorder="0"
+          seamless
+          src={`https://p3d.in/e/${id3D[ship.id]}+spin+load+bg-none+nopan+nozoom+norotate+controls,border,loader-hidden`}
+        />
+        <Details>
+          <p>Manufacturer: {manufacturer}</p>
+          <p>Class: {shipClass}</p>
+          <p>Price: {price || 'Come in person for an amazing discount!'}</p>
+          <Purchase type="button">Purchase</Purchase>
+        </Details>
+      </Major>
+      <Minor>
         {
           specs.map(spec => (
             <li key={spec}>
@@ -98,7 +138,7 @@ const ShipInfo = ({ ships, match }) => {
             </li>
           ))
         }
-      </Details>
+      </Minor>
     </Info>
   );
 };

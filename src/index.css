@@ -13,25 +13,31 @@
   src: url("./assets/darkkatarn.woff2");
 }
 
-html body {
+body {
   /* These colors are from the averaged color palette of Episode IV */
-  --new-hope-silver: #dcdce5;
-  --new-hope-dust: #a7a3a2;
-  --new-hope-blue: #2a8dce;
-  --new-hope-tan: #76676c;
-  --new-hope-brown: #3e3739;
-  --new-hope-black: #130c0e;
+  --sw-silver: #dcdce5;
+  --sw-dust: #a7a3a2;
+  --sw-blue: #2a8dce;
+  --sw-space: #02020e;
 
   margin: 0;
   padding: 0;
-  color: var(--new-hope-brown);
-  background-color: var(--new-hope-black);
+  color: var(--sw-blue);
+  background-color: #000000;
   background-image: url('./assets/starfield.jpg');
-  background-size: contain;
+  background-size: cover;
   text-align: center;
 }
 
 ul li:nth-child(even) {
-  color: var(--new-hope-silver);
-  background-color: var(--new-hope-tan);
+  color: #000000;
+  background-color: var(--sw-dust);
+}
+
+p {
+  margin-top: 0;
+}
+
+@media only screen and (min-width: 768px) {
+  p { margin-bottom: 2rem; }
 }

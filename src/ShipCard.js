@@ -6,8 +6,9 @@ import placeholderImage from './assets/placeholder.jpg';
 const Card = styled.div`
   display: flex;
   flex-direction: column;
-  border: 1px solid var(--new-hope-blue);
-  box-shadow: inset 0 0 10px 3px var(--new-hope-blue);
+  border: 1px solid var(--sw-blue);
+  border-radius: 5px;
+  box-shadow: inset 0 0 10px 3px var(--sw-blue);
   height: 66vw;
   text-align: center;
 
@@ -18,24 +19,24 @@ const Card = styled.div`
 `;
 
 const ModelName = styled.div`
-  box-shadow: inset 0 0 10px 3px var(--new-hope-blue);
+  box-shadow: inset 0 0 10px 3px var(--sw-blue);
   min-height: 2.1rem;
 `;
 
 const Text = styled.p`
   white-space: nowrap;
   overflow: hidden;
-  color: var(--new-hope-dust);
+  color: var(--sw-dust);
+  margin: 0.5rem auto;
 
   @media only screen and (min-width: 768px) {
-    margin: 0.5rem auto;
     font-size: 0.9rem;
   }
 `;
 
 const Thumbnail = styled.div`
   flex: 1;
-  box-shadow: inset 0 0 10px 3px var(--new-hope-blue);
+  box-shadow: inset 0 0 10px 3px var(--sw-blue);
   background-image: url(${placeholderImage});
   background-position: center;
   background-size: cover;
@@ -46,9 +47,9 @@ const Thumbnail = styled.div`
 `;
 
 const StyledLink = styled(Link)`
-  border-radius: 0 0 5px 5px;
+  border-radius: 5px;
   width: 100%;
-  box-shadow: 2px 0 20px 5px var(--new-hope-blue);
+  box-shadow: 2px 0 20px 5px var(--sw-blue);
   margin: 1rem 0 1rem;
   text-decoration: none;
 

@@ -7,8 +7,8 @@ const LangButton = styled.button`
   padding: 0.1rem 0.4rem;
   border: none;
 
-  color: var(--new-hope-silver);
-  background-color: var(--new-hope-tan);
+  color: var(--sw-space);
+  background-color: var(--sw-dust);
   cursor: pointer;
   vertical-align: middle;
 `;
@@ -17,23 +17,24 @@ const Language = ({ handleClick, current }) => {
   const Aurebesh = styled(LangButton)`
     font-family: "aurebesh";
     border-radius: 5px 0 0 5px;
-    background-color: ${current === 'aurebesh' && 'var(--new-hope-blue)'};
+    background-color: ${current === 'aurebesh' && 'var(--sw-blue)'};
+    color: ${current === 'aurebesh' && 'var(--sw-silver)'};
   `;
 
   const Mandalorian = styled(LangButton)`
     font-family: "mandalorian";
-    background-color: ${current === 'mandalorian' && 'var(--new-hope-blue)'};
+    background-color: ${current === 'mandalorian' && 'var(--sw-blue)'};
   `;
 
   const Darkkatarn = styled(LangButton)`
     font-family: "darkkatarn";
-    background-color: ${current === 'darkkatarn' && 'var(--new-hope-blue)'};
+    background-color: ${current === 'darkkatarn' && 'var(--sw-blue)'};
   `;
 
   const English = styled(LangButton)`
     font-family: sans-serif;
     border-radius: 0 5px 5px 0;
-    background-color: ${current === 'sans-serif' && 'var(--new-hope-blue)'};
+    background-color: ${current === 'sans-serif' && 'var(--sw-blue)'};
   `;
 
   return (

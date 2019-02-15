@@ -7,12 +7,12 @@ import ShipInfo from './ShipInfo';
 
 const Title = styled.h1`
   font-size: 2.5rem;
-  color: var(--new-hope-silver);
+  color: var(--sw-silver);
   text-shadow:
-    -1px 0 var(--new-hope-blue),
-    0 1px var(--new-hope-blue),
-    1px 0 var(--new-hope-blue),
-    0 -1px var(--new-hope-blue);
+    -1px 0 var(--sw-blue),
+    0 1px var(--sw-blue),
+    1px 0 var(--sw-blue),
+    0 -1px var(--sw-blue);
 
   @media only screen and (min-width: 768px) {
     font-size: 3rem;
@@ -51,12 +51,12 @@ const App = () => {
     box-sizing: border-box;
     font-family: ${language};
     text-align: center;
-    background-color: #000000;
-    border: 1px solid var(--new-hope-tan);
+    background-color: var(--sw-space);
+    border: 1px solid var(--sw-blue);
     border-radius: 5px;
+    width: 100%;
 
     @media only screen and (min-width: 768px) {
-      width: 100%;
       max-width: 60rem;
       margin-top: 2rem;
     }
