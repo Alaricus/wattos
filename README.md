@@ -25,4 +25,4 @@ I thought that adding several languages (well, fonts really) for Aurebesh, Manda
 
 The site is also mobile-friendly, and should be accessible.
 
-All of the assets (images, favicon, 3D models, and fonts) are stolen from the Internet because I don't know how to make them myself.
+All of the assets (images, favicon, 3D models, and fonts) are stolen from the Internet because I don't know how to create art.

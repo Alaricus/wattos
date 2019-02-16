@@ -47,5 +47,5 @@ p {
 
 @media only screen and (min-width: 768px) {
   p { margin-bottom: 1rem; height: 1.1rem; line-height: 1rem; overflow: hidden; }
-  li { min-height: 2rem; }
+  li { min-height: 2.1rem; }
 }
