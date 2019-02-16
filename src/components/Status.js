@@ -1,45 +1,42 @@
 import React from 'react';
 import styled from 'styled-components';
-// import notfound from '../assets/notfound.png';
-// import spinner from '../assets/spinner.png';
-// import failed from '../assets/failed.png';
+import images from '../images';
 
 const Wrapper = styled.div`
   width: 100%;
   text-align: center;
 `;
 
-// const Spinner = styled.img`
-//   margin-top: 10%;
-//   animation: spin 2s linear infinite;
-//   height: 10rem;
-//   width: 10rem;
+const Image = styled.img`
+margin-top: 10%;
+`;
 
-//   @keyframes spin {
-//     0% { transform: rotate(0deg); }
-//     100% { transform: rotate(360deg); }
-//   }
-// `;
+const Spinner = styled(Image)`
+  animation: spin 5s linear infinite;
 
-const Status = ({ type = 'notfound'}) => {
-  // let image = notfound;
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+`;
+
+const Status = ({ type = 'notfound' }) => {
+  let image = <Image src={images[type]} alt={type} />;
   let text = 'This is not the page you are looking for...';
 
   if (type === 'loading') {
-    // image = spinner;
+    image = <Spinner src={images[type]} alt={type} />;
     text = 'Loading data...';
   }
 
   if (type === 'failed') {
-    // image = failed;
+    image = <Image src={images[type]} alt={type} />;
     text = 'Failed to load data...';
   }
 
   return (
     <Wrapper>
-      {
-        // type === 'loading' && <Spinner src={image} alt={type}/>
-      }
+      {image}
       <h2>{text}</h2>
     </Wrapper>
   );

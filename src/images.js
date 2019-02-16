@@ -1,11 +1,14 @@
-import QGbBq from './assets/QGbBq.jpg';
-import HBhDd from './assets/HBhDd.jpg';
-import e1bbc from './assets/e1bbc.jpg';
-import FLfkh from './assets/FLfkh.jpg';
-import uksPm from './assets/uksPm.jpg';
-import rdDEP from './assets/rdDEP.jpg';
-import LaEdm from './assets/LaEdm.jpg';
-import yqoE0 from './assets/yqoE0.jpg';
+import QGbBq from './assets/QGbBq.png';
+import HBhDd from './assets/HBhDd.png';
+import e1bbc from './assets/e1bbc.png';
+import FLfkh from './assets/FLfkh.png';
+import uksPm from './assets/uksPm.png';
+import rdDEP from './assets/rdDEP.png';
+import LaEdm from './assets/LaEdm.png';
+import yqoE0 from './assets/yqoE0.png';
+import notfound from './assets/notfound.png';
+import loading from './assets/loading.png';
+import failed from './assets/failed.png';
 
 export default {
   QGbBq, // TIE Fighter
@@ -16,4 +19,7 @@ export default {
   rdDEP, // Shuttle
   LaEdm, // A-wing
   yqoE0, // B-wing
+  notfound,
+  loading,
+  failed,
 };

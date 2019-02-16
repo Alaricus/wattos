@@ -78,7 +78,7 @@ const App = () => {
           return [...acc, ship];
         }, []);
         setShips(stock);
-        setStatus('loaded')
+        setStatus('loaded');
       }
     } catch (err) {
       setStatus('failed');

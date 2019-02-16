@@ -17,7 +17,7 @@ The app doesn't use Redux, because it offers no benefit to such a tiny project.
 
 ## Design decisions
 
-The most difficult design decision was to continue working after seeing your site and knowing full well that I couldn't produce something like that even in a year.
+The most difficult design decision was to continue working after seeing your site and knowing full well that I would never posess the artistic ability of that magnitude.
 
 I thought that adding several languages (well, fonts really) for Aurebesh, Mandalorian, and that one language from Dark Forces, in addition to English, would make the site enticing to more customers.
 
