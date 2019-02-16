@@ -15,7 +15,7 @@ The app uses React hooks because hooks are awesome and classes are not.
 
 The app doesn't use Redux, because it offers no benefit to such a tiny project.
 
-It also doesn't use Next.js, because I've never played with it and felt that I should probably do the best I can with what I already know.
+It also doesn't use Next.js, because I've never used it and felt that I should probably do the best I can with what I already know.
 
 ## Design decisions
 

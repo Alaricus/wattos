@@ -75,6 +75,7 @@ const App = () => {
           const ship = cur;
           ship.id = id;
           ship.id3d = id3D[id];
+          ship.available = true;
           return [...acc, ship];
         }, []);
         setShips(stock);
@@ -83,6 +84,18 @@ const App = () => {
     } catch (err) {
       setStatus('failed');
     }
+  };
+
+  const purchase = (id) => {
+    const inventory = ships.map((ship) => {
+      const current = ship;
+      if (current.id === id) {
+        current.available = false;
+      }
+      return current;
+    });
+    inventory.sort((a, b) => b.available - a.available);
+    setShips(inventory);
   };
 
   const Page = styled.div`
@@ -108,7 +121,7 @@ const App = () => {
     content = (
       <Switch>
         <Route exact path="/" render={props => <Inventory {...props} ships={ships} />} />
-        <Route path="/ship/:id" render={props => <ShipInfo {...props} ships={ships} />} />
+        <Route path="/ship/:id" render={props => <ShipInfo {...props} ships={ships} purchase={purchase} />} />
         <Route component={Status} />
       </Switch>
     );

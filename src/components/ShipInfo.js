@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Status from './Status';
@@ -78,19 +78,6 @@ const Details = styled.div`
   }
 `;
 
-const Purchase = styled.button`
-  color: var(--sw-silver);
-  background-color: var(--sw-blue);
-  font-size: 1.2rem;
-  height: 3rem;
-  width: 100%;
-  padding: 0.1rem 0.4rem;
-  border: none;
-  border-radius: 5px;
-  font-family: inherit;
-  margin-top: 1rem;
-`;
-
 const Minor = styled.ul`
   text-align: left;
   list-style-type: none;
@@ -102,7 +89,7 @@ const Fact = styled.div`
 `;
 
 const Category = styled.div`
-flex: 1;
+  flex: 1;
   padding: 0.3rem;
   text-transform: capitalize;
 
@@ -119,7 +106,6 @@ const Data = styled.div`
 
   @media only screen and (min-width: 768px) {
     display: inline-block;
-
     text-align: right;
   }
 `;
@@ -132,6 +118,7 @@ const Return = styled(Link)`
   text-decoration: none;
   background-color: var(--sw-blue);
   color: var(--sw-silver);
+  border: 1px solid var(--sw-space);
   border-radius: 50px;
   height: 2.2rem;
   width: 3.2rem;
@@ -145,15 +132,78 @@ const Return = styled(Link)`
   }
 `;
 
-const ShipInfo = ({ ships, match }) => {
+const Confirmation = styled.div`
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  z-index: 200;
+  color: var(--sw-silver);
+  background-color: var(--sw-space);
+  border: 1px solid var(--sw-blue);
+  border-radius: 5px;
+  padding: 0 0.5rem 1rem 0.5rem;
+  top 2rem;
+
+  @media only screen and (min-width: 768px) {
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    padding: 2rem;
+    width: 40rem;
+  }
+`;
+
+const Block = styled.div`
+  position: fixed;
+  background: rgba(0, 0, 0, 0.85);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+`;
+
+const ShipInfo = ({ ships, match, history, purchase }) => {
+  const [showConfirmation, setShowConfirmation] = useState(false);
   const ship = ships.find(item => item.id === match.params.id);
 
   if (!ship) {
     return <Status />;
   }
 
-  const { name, manufacturer, class: shipClass, price, techspecs } = ship;
+  const { name, manufacturer, class: shipClass, price, techspecs, available, id, id3d } = ship;
   const specs = Object.keys(techspecs);
+
+  const handlePurchase = () => {
+    available && setShowConfirmation(true);
+  };
+
+  const confirm = () => {
+    purchase(id);
+    history.push('/');
+  };
+
+  const Purchase = styled.button`
+    color: var(--sw-silver);
+    background-color: var(--sw-${available ? 'blue' : 'gray'});
+    font-size: 1.2rem;
+    height: 3rem;
+    width: 100%;
+    padding: 0.1rem 0.4rem;
+    border: none;
+    border-radius: 5px;
+    font-family: inherit;
+    margin-top: 1rem;
+  `;
+
+  const Confirm = styled(Purchase)`
+    max-width: 20rem;
+    margin: 0 auto;
+
+    @media only screen and (min-width: 768px) {
+      margin-top: 2rem;
+    }
+  `;
 
   return (
     <Fragment>
@@ -163,17 +213,19 @@ const ShipInfo = ({ ships, match }) => {
           <Return to="/">Back</Return>
           <Cover />
           <Model
-            title={ship.id}
+            title={id}
             frameBorder="0"
             seamless
             src={`https://p3d.in/e/${ship.id3d}+spin+load+bg-none+nopan+nozoom+norotate+controls,border,loader-hidden`}
           />
           <Details>
-            <Picture src={images[ship.id3d]} alt={ship.name} />
+            <Picture src={images[id3d]} alt={name} />
             <p>Manufacturer: {manufacturer}</p>
             <p>Class: {shipClass}</p>
             <p>Price: {price || 'Come in person for an amazing discount!'}</p>
-            <Purchase type="button">Purchase</Purchase>
+            <Purchase type="button" onClick={handlePurchase} >
+              { available ? 'Purchase' : 'Sold Out' }
+            </Purchase>
           </Details>
         </Major>
         <Minor>
@@ -188,6 +240,18 @@ const ShipInfo = ({ ships, match }) => {
             ))
           }
         </Minor>
+        {
+          showConfirmation &&
+          <Block>
+            <Confirmation>
+              <h2>Congratulations!</h2>
+              <p>The {name} is now yours!</p>
+              <p>{price} have been removed from your account.</p>
+              <p>Pick up your new ship at our Mos Espa location.</p>
+              <Confirm onClick={confirm} >OK</Confirm>
+            </Confirmation>
+          </Block>
+        }
       </Info>
     </Fragment>
   );
