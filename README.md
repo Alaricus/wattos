@@ -15,6 +15,8 @@ The app uses React hooks because hooks are awesome and classes are not.
 
 The app doesn't use Redux, because it offers no benefit to such a tiny project.
 
+It also doesn't use Next.js, because I've never played with it and felt that I should probably do the best I can with what I already know.
+
 ## Design decisions
 
 The most difficult design decision was to continue working after seeing your site and knowing full well that I would never posess the artistic ability of that magnitude.
@@ -24,7 +26,3 @@ I thought that adding several languages (well, fonts really) for Aurebesh, Manda
 The site is also mobile-friendly, and should be accessible.
 
 All of the assets (images, favicon, 3D models, and fonts) are stolen from the Internet because I don't know how to make them myself.
-
-## Misc.
-
-W40K > SW

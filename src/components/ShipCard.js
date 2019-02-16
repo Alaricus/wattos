@@ -29,9 +29,12 @@ const Text = styled.p`
   color: var(--sw-dust);
   margin: 0.5rem auto;
   text-transform: capitalize;
+  line-height: 1rem;
+  width: 95%;
 
   @media only screen and (min-width: 768px) {
-    font-size: 0.9rem;
+    height: 1.3rem;
+    font-size: 1rem;
   }
 `;
 

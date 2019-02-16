@@ -8,7 +8,8 @@ const Wrapper = styled.div`
 `;
 
 const Image = styled.img`
-margin-top: 10%;
+  margin-top: 10%;
+  max-width: 90%;
 `;
 
 const Spinner = styled(Image)`
@@ -22,7 +23,7 @@ const Spinner = styled(Image)`
 
 const Status = ({ type = 'notfound' }) => {
   let image = <Image src={images[type]} alt={type} />;
-  let text = 'This is not the page you are looking for...';
+  let text = 'This is not the ship you are looking for ...';
 
   if (type === 'loading') {
     image = <Spinner src={images[type]} alt={type} />;
@@ -31,13 +32,14 @@ const Status = ({ type = 'notfound' }) => {
 
   if (type === 'failed') {
     image = <Image src={images[type]} alt={type} />;
-    text = 'Failed to load data...';
+    text = 'Failed to load data.';
   }
 
   return (
     <Wrapper>
       {image}
       <h2>{text}</h2>
+      { type === 'notfound' && <h3>... but it should be.</h3>}
     </Wrapper>
   );
 };

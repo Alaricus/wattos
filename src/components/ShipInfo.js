@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Status from './Status';
 import images from '../images';
@@ -15,6 +16,8 @@ const Info = styled.div`
 
 const Name = styled.h2`
   text-transform: capitalize;
+  height: 2rem;
+  line-height: 1rem;
 `;
 
 const Major = styled.div`
@@ -116,6 +119,27 @@ const Data = styled.div`
   }
 `;
 
+const Return = styled(Link)`
+  position: fixed;
+  left: 0.1rem;
+  top: 0.1rem;
+  display: inline-block;
+  text-decoration: none;
+  background-color: var(--sw-blue);
+  color: var(--sw-silver);
+  border-radius: 50px;
+  height: 2.2rem;
+  width: 3.2rem;
+  padding-top: 1rem;
+  line-height: 1rem;
+
+  @media only screen and (min-width: 768px) {
+    position: absolute;
+    left: 0;
+    top: -5.2rem;
+  }
+`;
+
 const ShipInfo = ({ ships, match }) => {
   const ship = ships.find(item => item.id === match.params.id);
 
@@ -127,35 +151,38 @@ const ShipInfo = ({ ships, match }) => {
   const specs = Object.keys(techspecs);
 
   return (
-    <Info>
+    <Fragment>
       <Name>{name}</Name>
-      <Major>
-        <Cover />
-        <Model
-          title={ship.id}
-          frameBorder="0"
-          seamless
-          src={`https://p3d.in/e/${ship.id3d}+spin+load+bg-none+nopan+nozoom+norotate+controls,border,loader-hidden`}
-        />
-        <Details>
-          <Picture src={images[ship.id3d]} alt={ship.name} />
-          <p>Manufacturer: {manufacturer}</p>
-          <p>Class: {shipClass}</p>
-          <p>Price: {price || 'Come in person for an amazing discount!'}</p>
-          <Purchase type="button">Purchase</Purchase>
-        </Details>
-      </Major>
-      <Minor>
-        {
-          specs.map(spec => (
-            <li key={spec}>
-              <Aspect>{`${spec}:`}</Aspect>
-              <Data>{techspecs[spec]}</Data>
-            </li>
-          ))
-        }
-      </Minor>
-    </Info>
+      <Info>
+        <Major>
+          <Return to="/">Back</Return>
+          <Cover />
+          <Model
+            title={ship.id}
+            frameBorder="0"
+            seamless
+            src={`https://p3d.in/e/${ship.id3d}+spin+load+bg-none+nopan+nozoom+norotate+controls,border,loader-hidden`}
+          />
+          <Details>
+            <Picture src={images[ship.id3d]} alt={ship.name} />
+            <p>Manufacturer: {manufacturer}</p>
+            <p>Class: {shipClass}</p>
+            <p>Price: {price || 'Come in person for an amazing discount!'}</p>
+            <Purchase type="button">Purchase</Purchase>
+          </Details>
+        </Major>
+        <Minor>
+          {
+            specs.map(spec => (
+              <li key={spec}>
+                <Aspect>{`${spec}:`}</Aspect>
+                <Data>{techspecs[spec]}</Data>
+              </li>
+            ))
+          }
+        </Minor>
+      </Info>
+    </Fragment>
   );
 };
 

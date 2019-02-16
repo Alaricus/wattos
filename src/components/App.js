@@ -5,7 +5,7 @@ import LanguageBar from './Language';
 import Status from './Status';
 import Inventory from './Inventory';
 import ShipInfo from './ShipInfo';
-import splash from '../assets/splash.jpg';
+import splash from '../assets/splash.png';
 
 const Header = styled.div`
   display: flex;
