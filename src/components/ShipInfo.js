@@ -97,24 +97,29 @@ const Minor = styled.ul`
   padding: 0.5rem;
 `;
 
-const Aspect = styled.div`
+const Fact = styled.div`
+  display: flex;
+`;
+
+const Category = styled.div`
+flex: 1;
   padding: 0.3rem;
   text-transform: capitalize;
 
   @media only screen and (min-width: 768px) {
     display: inline-block;
     padding: 0.3rem 0 0.3rem 0.4rem;
-    width: 18%;
   }
 `;
 
 const Data = styled.div`
+  flex: 2;
   padding: 0.3rem;
   text-transform: capitalize;
 
   @media only screen and (min-width: 768px) {
     display: inline-block;
-    width: 80%;
+
     text-align: right;
   }
 `;
@@ -175,8 +180,10 @@ const ShipInfo = ({ ships, match }) => {
           {
             specs.map(spec => (
               <li key={spec}>
-                <Aspect>{`${spec}:`}</Aspect>
-                <Data>{techspecs[spec]}</Data>
+                <Fact>
+                  <Category>{`${spec}:`}</Category>
+                  <Data>{techspecs[spec]}</Data>
+                </Fact>
               </li>
             ))
           }
