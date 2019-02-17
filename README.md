@@ -9,7 +9,7 @@ To run the app locally, first you need to install dependencies with `npm install
 
 When finished run a development server with `npm start` or `yarn start`.
 
-Alternatively you can create a build by running `npm run build` or `yarn run build` then start a local server by running `node server.js` and the app will be available at [http://localhost:3001/](http://localhost:3001/) (this requires Express.)
+Alternatively you can create a build by running `npm run build` or `yarn run build` then start a local server by running `node server.js` from within the project dorectory and the app will be available at [http://localhost:3001/](http://localhost:3001/). This requires Express, and you will also need to change the "homepage" property in package.json to read "/" before building.
 
 ## Technical decisions
 
