@@ -245,9 +245,10 @@ const ShipInfo = ({ ships, match, history, purchase }) => {
           <Block>
             <Confirmation>
               <h2>Congratulations!</h2>
-              <p>The {name} is now yours!</p>
-              <p>{price} have been removed from your account.</p>
+              <p>The {name} is now {price ? 'yours' : 'being held for you'}!</p>
+              {price && <p>{price} have been removed from your account.</p>}
               <p>Pick up your new ship at our Mos Espa location.</p>
+              {!price && <p>(We will tell you the price when you get here.)</p>}
               <Confirm onClick={confirm} >OK</Confirm>
             </Confirmation>
           </Block>
