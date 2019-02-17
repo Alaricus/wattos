@@ -2,6 +2,8 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Live version is at [www.alaric.us/wattos/](https://www.alaric.us/wattos/)
+
 ## Starting the app
 To run the app locally, first you need to install dependencies with `npm install` or `yarn`.
 
@@ -23,6 +25,8 @@ The most difficult design decision was to continue working after seeing your sit
 
 I thought that adding several languages (well, fonts really) for Aurebesh, Mandalorian, and that one language from Dark Forces, in addition to English, would make the site enticing to more customers.
 
-The site is also mobile-friendly, and should be accessible.
+The 'Purchase' button will display a congratulations modal and redirect to the front page, where the purchased ship will be grayed out and moved to the bottom of the list. The page will remail accessible,but the button will now be grayed out with its text changed to 'Sold out.' In order to get the ships back in stock, just reload the page: all these changes are per session.
+
+The site is also mobile-friendly, and _should_ be accessible to people with disabilities.
 
 All of the assets (images, favicon, 3D models, and fonts) are stolen from the Internet because I don't know how to create art.

@@ -137,7 +137,7 @@ const App = () => {
   };
 
   return (
-    <Router>
+    <Router basename={`${process.env.PUBLIC_URL}`}>
       <Page>
         <Header>
           <Title>Watto’s Spaceship Emporium</Title>
