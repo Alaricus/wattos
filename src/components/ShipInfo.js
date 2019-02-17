@@ -2,6 +2,7 @@ import React, { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Status from './Status';
+import Model from './Model';
 import images from '../images';
 
 const Info = styled.div`
@@ -38,21 +39,6 @@ const Cover = styled.div`
   @media only screen and (min-width: 768px) {
     width: 60%;
     height: 25rem;
-  }
-`;
-
-const Model = styled.iframe`
-  display: block;
-  background-size: cover;
-  width: 100%;
-  height: 18rem;
-
-  background-image: radial-gradient(var(--sw-blue) 1%, var(--sw-space) 40%, transparent 55%);
-
-  @media only screen and (min-width: 768px) {
-    width: 60%;
-    height: 25rem;
-    border-radius: 5px;
   }
 `;
 
@@ -212,12 +198,7 @@ const ShipInfo = ({ ships, match, history, purchase }) => {
         <Major>
           <Return to="/">Back</Return>
           <Cover />
-          <Model
-            title={id}
-            frameBorder="0"
-            seamless
-            src={`https://p3d.in/e/${ship.id3d}+spin+load+bg-none+nopan+nozoom+norotate+controls,border,loader-hidden`}
-          />
+          <Model id={id} id3d={id3d} />
           <Details>
             <Picture src={images[id3d]} alt={name} />
             <p>Manufacturer: {manufacturer}</p>
