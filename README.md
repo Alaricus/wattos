@@ -23,8 +23,6 @@ The site is responsive, and _should_ be accessible.
 
 ## Design decisions
 
-The most difficult design decision was to continue working after seeing your site and knowing full well that I would never posess the artistic ability of that magnitude.
-
 I thought that adding several languages (well, fonts really) for Aurebesh, Mandalorian, and that one language from Dark Forces, in addition to English, would make the site enticing to more customers.
 
 The 'Purchase' button will display a congratulations modal and redirect to the front page, where the purchased ship will be grayed out and moved to the bottom of the list. The page will remain accessible, but the button will now be grayed out with its text changed to 'Sold out.' In order to get the ships back in stock, just reload the page: all these changes are per session.

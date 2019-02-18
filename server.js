@@ -9,7 +9,6 @@ const app = express();
 app.use(express.static(path.resolve(`${__dirname}/${staticdir}`)));
 
 app.get('*', (req, res) => {
-  console.log(`Request: ${req.originalUrl}`);
   res.sendFile(path.resolve(`${__dirname}/${staticdir}`, 'index.html'));
 });
 
