@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
+import { ShipsCtx } from './App';
 import ShipCard from './ShipCard';
 
 
@@ -20,12 +21,16 @@ const Cards = styled.div`
   }
 `;
 
-const Inventory = ({ ships }) => (
-  <Cards>
-    {
-      ships && ships.map(ship => (<ShipCard ship={ship} key={ship.id} />))
-    }
-  </Cards>
-);
+const Inventory = () => {
+  const [ships] = useContext(ShipsCtx);
+  ships.sort((a, b) => b.available - a.available);
+  return (
+    <Cards>
+      {
+        ships && ships.map(ship => (<ShipCard ship={ship} key={ship.id} />))
+      }
+    </Cards>
+  );
+};
 
 export default Inventory;

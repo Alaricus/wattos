@@ -15,7 +15,7 @@ Alternatively you can change the `"homepage"` property in ***package.json*** to 
 
 The app uses React hooks because hooks are awesome and classes are not.
 
-The app doesn't use Redux, because it offers no benefit to such a tiny project.
+The app doesn't use Redux, because Context is simpler for such a tiny project.
 
 It also doesn't use Next.js, because I've never used it and felt that I should probably do the best I can with what I already know.
 

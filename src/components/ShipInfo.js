@@ -1,8 +1,10 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { ShipsCtx } from './App';
 import Status from './Status';
 import Model from './Model';
+import Confirmation from './Confirmation';
 import images from '../images';
 
 const Info = styled.div`
@@ -118,39 +120,9 @@ const Return = styled(Link)`
   }
 `;
 
-const Confirmation = styled.div`
-  position: fixed;
-  display: flex;
-  flex-direction: column;
-  z-index: 200;
-  color: var(--sw-silver);
-  background-color: var(--sw-space);
-  border: 1px solid var(--sw-blue);
-  border-radius: 5px;
-  padding: 0 0.5rem 1rem 0.5rem;
-  top 2rem;
-
-  @media only screen and (min-width: 768px) {
-    top: 25%;
-    left: 50%;
-    transform: translate(-50%, 0);
-    padding: 2rem;
-    width: 40rem;
-  }
-`;
-
-const Block = styled.div`
-  position: fixed;
-  background: rgba(0, 0, 0, 0.85);
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 100;
-`;
-
-const ShipInfo = ({ ships, match, history, purchase }) => {
+const ShipInfo = ({ match, history }) => {
   const [showConfirmation, setShowConfirmation] = useState(false);
+  const [ships, setShips] = useContext(ShipsCtx);
   const ship = ships.find(item => item.id === match.params.id);
 
   if (!ship) {
@@ -161,12 +133,16 @@ const ShipInfo = ({ ships, match, history, purchase }) => {
   const specs = Object.keys(techspecs);
 
   const handlePurchase = () => {
-    available && setShowConfirmation(true);
-  };
+    const inventory = ships.map((item) => {
+      const current = item;
+      if (current.id === id) {
+        current.available = false;
+      }
+      return current;
+    });
+    setShips(inventory);
 
-  const confirm = () => {
-    purchase(id);
-    history.push('/');
+    available && setShowConfirmation(true);
   };
 
   const Purchase = styled.button`
@@ -180,15 +156,6 @@ const ShipInfo = ({ ships, match, history, purchase }) => {
     border-radius: 5px;
     font-family: inherit;
     margin-top: 1rem;
-  `;
-
-  const Confirm = styled(Purchase)`
-    max-width: 20rem;
-    margin: 0 auto;
-
-    @media only screen and (min-width: 768px) {
-      margin-top: 2rem;
-    }
   `;
 
   return (
@@ -222,17 +189,7 @@ const ShipInfo = ({ ships, match, history, purchase }) => {
           }
         </Minor>
         {
-          showConfirmation &&
-          <Block>
-            <Confirmation>
-              <h2>Congratulations!</h2>
-              <p>The {name} is now {price ? 'yours' : 'being held for you'}!</p>
-              {price && <p>{price} have been removed from your account.</p>}
-              <p>Pick up your new ship at our Mos Espa location.</p>
-              {!price && <p>(We will tell you the price when you get here.)</p>}
-              <Confirm onClick={confirm} >OK</Confirm>
-            </Confirmation>
-          </Block>
+          showConfirmation && <Confirmation name={name} price={price} history={history} />
         }
       </Info>
     </Fragment>

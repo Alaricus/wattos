@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, createContext } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import styled from 'styled-components';
 import LanguageBar from './Language';
@@ -6,23 +6,6 @@ import Status from './Status';
 import Inventory from './Inventory';
 import ShipInfo from './ShipInfo';
 import splash from '../assets/splash.png';
-
-const Header = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: space-evenly;
-  align-items: center;
-  background-image: url(${splash});
-  background-repeat: no-repeat;
-  background-position: center;
-  border-radius: 5px;
-  box-shadow: inset 0 -10px 20px 3px var(--sw-space);
-
-  @media only screen and (min-width: 768px) {
-    height: 29.7rem;
-  }
-`;
 
 const Title = styled.h1`
   font-size: 2rem;
@@ -45,6 +28,8 @@ const Title = styled.h1`
     width: 98%
   }
 `;
+
+export const ShipsCtx = createContext([null, () => {}]);
 
 const App = () => {
   const [language, setLanguage] = useState('aurebesh');
@@ -86,32 +71,37 @@ const App = () => {
     }
   };
 
-  const purchase = (id) => {
-    const inventory = ships.map((ship) => {
-      const current = ship;
-      if (current.id === id) {
-        current.available = false;
-      }
-      return current;
-    });
-    inventory.sort((a, b) => b.available - a.available);
-    setShips(inventory);
-  };
-
   const Page = styled.div`
-    display: inline-block;
-    box-sizing: border-box;
-    font-family: ${language};
-    text-align: center;
-    background-color: var(--sw-space);
-    width: 100%;
-    min-height: 90vh;
+  display: inline-block;
+  box-sizing: border-box;
+  font-family: ${language};
+  text-align: center;
+  background-color: var(--sw-space);
+  width: 100%;
+  min-height: 90vh;
+
+  @media only screen and (min-width: 768px) {
+    max-width: 60rem;
+    margin-top: 2rem;
+    border: 1px solid var(--sw-blue);
+    border-radius: 5px;
+  }
+`;
+
+  const Header = styled.div`
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+    background-image: url(${splash});
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 5px;
+    box-shadow: inset 0 -10px 20px 3px var(--sw-space);
 
     @media only screen and (min-width: 768px) {
-      max-width: 60rem;
-      margin-top: 2rem;
-      border: 1px solid var(--sw-blue);
-      border-radius: 5px;
+      height: 29.7rem;
     }
   `;
 
@@ -119,11 +109,15 @@ const App = () => {
 
   if (status === 'loaded') {
     content = (
-      <Switch>
-        <Route exact path="/" render={props => <Inventory {...props} ships={ships} />} />
-        <Route path="/ship/:id" render={props => <ShipInfo {...props} ships={ships} purchase={purchase} />} />
-        <Route component={Status} />
-      </Switch>
+      <ShipsCtx.Provider value={[ships, () => {}]}>
+        <Router basename={`${process.env.PUBLIC_URL}`}>
+          <Switch>
+            <Route exact path="/" render={props => <Inventory {...props} />} />
+            <Route path="/ship/:id" render={props => <ShipInfo {...props} />} />
+            <Route component={Status} />
+          </Switch>
+        </Router>
+      </ShipsCtx.Provider>
     );
   }
 
@@ -132,20 +126,17 @@ const App = () => {
   }
 
   const changeLanguage = (e) => {
-    e.preventDefault();
     setLanguage(e.target.dataset.lang);
   };
 
   return (
-    <Router basename={`${process.env.PUBLIC_URL}`}>
-      <Page>
-        <Header>
-          <Title>Watto’s Spaceship Emporium</Title>
-          <LanguageBar handleClick={changeLanguage} current={language} />
-        </Header>
-        { content }
-      </Page>
-    </Router>
+    <Page>
+      <Header>
+        <Title>Watto’s Spaceship Emporium</Title>
+        <LanguageBar handleClick={changeLanguage} current={language} />
+      </Header>
+      { content }
+    </Page>
   );
 };
 
