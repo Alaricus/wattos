@@ -48,13 +48,7 @@ const Language = ({ handleClick, current }) => {
   return (
     <div>
       <Wrapper>
-        <Aurebesh
-          type="button"
-          onClick={handleClick}
-          data-lang="aurebesh"
-        >
-          Aurebesh
-        </Aurebesh>
+        <Aurebesh onClick={handleClick} data-lang="aurebesh">Aurebesh</Aurebesh>
         <Mandalorian onClick={handleClick} data-lang="mandalorian">Mandalorian</Mandalorian>
         <Darkkatarn onClick={handleClick} data-lang="darkkatarn">Katarn</Darkkatarn>
         <English onClick={handleClick} data-lang="titillium">English</English>
