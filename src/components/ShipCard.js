@@ -60,14 +60,14 @@ const ModelName = styled.div`
   min-height: 2.1rem;
 `;
 
-const StyledLink = styled(Link)`
+const StyledLink = styled(({ isAvailable, ...rest }) => <Link {...rest} />)`
   border-radius: 5px;
   width: 100%;
   margin: 1rem 0 1rem;
   text-decoration: none;
 
   @media only screen and (min-width: 768px) {
-    box-shadow: 2px 0 10px 3px var(--sw-${props => props.available ? 'blue' : 'gray'});
+    box-shadow: 2px 0 10px 3px var(--sw-${props => props.isAvailable ? 'blue' : 'gray'});
     width: 17rem;
     margin: 0 1rem 3rem 1rem;
   }
@@ -77,7 +77,7 @@ const ShipCard = ({ ship }) => {
   const { name, available, id, id3d } = ship;
 
   return (
-    <StyledLink to={`/ship/${id}`} available={available} >
+    <StyledLink to={`/ship/${id}`} isAvailable={available} >
       <Card available={available} >
         <Thumbnail available={available} id3d={id3d} />
         <ModelName available={available} >
