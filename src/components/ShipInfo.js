@@ -120,6 +120,18 @@ const Return = styled(Link)`
   }
 `;
 
+const Purchase = styled.button`
+  color: var(--sw-silver);
+  background-color: var(--sw-${props => props.available ? 'blue' : 'gray'});
+  font-size: 1.2rem;
+  height: 3rem;
+  width: 100%;
+  padding: 0.1rem 0.4rem;
+  border: none;
+  border-radius: 5px;
+  margin-top: 1rem;
+`;
+
 const ShipInfo = ({ match, history }) => {
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [ships, setShips] = useContext(ShipsCtx);
@@ -145,19 +157,6 @@ const ShipInfo = ({ match, history }) => {
     available && setShowConfirmation(true);
   };
 
-  const Purchase = styled.button`
-    color: var(--sw-silver);
-    background-color: var(--sw-${available ? 'blue' : 'gray'});
-    font-size: 1.2rem;
-    height: 3rem;
-    width: 100%;
-    padding: 0.1rem 0.4rem;
-    border: none;
-    border-radius: 5px;
-    font-family: inherit;
-    margin-top: 1rem;
-  `;
-
   return (
     <Fragment>
       <Name>{name}</Name>
@@ -171,7 +170,7 @@ const ShipInfo = ({ match, history }) => {
             <p>Manufacturer: {manufacturer}</p>
             <p>Class: {shipClass}</p>
             <p>Price: {price || 'Come in person for an amazing discount!'}</p>
-            <Purchase type="button" onClick={handlePurchase} >
+            <Purchase type="button" available={available} onClick={handlePurchase} >
               { available ? 'Purchase' : 'Sold Out' }
             </Purchase>
           </Details>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import styled from 'styled-components';
 
 const StyledIframe = styled.iframe`
@@ -25,4 +25,4 @@ const Model = ({ id, id3d }) => (
   />
 );
 
-export default Model;
+export default memo(Model);

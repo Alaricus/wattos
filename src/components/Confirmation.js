@@ -41,7 +41,6 @@ const Confirm = styled.button`
   padding: 0.1rem 0.4rem;
   border: none;
   border-radius: 5px;
-  font-family: inherit;
   margin-top: 1rem;
   width: 100%;
   margin: 0 auto;
