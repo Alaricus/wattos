@@ -137,9 +137,7 @@ const ShipInfo = ({ match, history }) => {
   const [ships, setShips] = useContext(ShipsCtx);
   const ship = ships.find(item => item.id === match.params.id);
 
-  if (!ship) {
-    return <Status />;
-  }
+  if (!ship) { return <Status />; }
 
   const { name, manufacturer, class: shipClass, price, techspecs, available, id, id3d } = ship;
   const specs = Object.keys(techspecs);

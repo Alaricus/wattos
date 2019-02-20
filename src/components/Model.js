@@ -6,7 +6,6 @@ const StyledIframe = styled.iframe`
   background-size: cover;
   width: 100%;
   height: 18rem;
-
   background-image: radial-gradient(var(--sw-blue) 1%, var(--sw-space) 40%, transparent 55%);
 
   @media only screen and (min-width: 768px) {

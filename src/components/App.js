@@ -7,6 +7,12 @@ import Inventory from './Inventory';
 import ShipInfo from './ShipInfo';
 import splash from '../assets/splash.png';
 
+const GlobalStyle = createGlobalStyle`
+  body {
+    font-family: ${props => (props.language)};
+  }
+`;
+
 const Page = styled.div`
   display: inline-block;
   box-sizing: border-box;
@@ -23,27 +29,21 @@ const Page = styled.div`
   }
   `;
 
-  const GlobalStyle = createGlobalStyle`
-    body {
-      font-family: ${props => (props.language)};
-    }
-  `;
+const Header = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+  background-image: url(${splash});
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 5px;
+  box-shadow: inset 0 -10px 20px 3px var(--sw-space);
 
-  const Header = styled.div`
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: space-evenly;
-    align-items: center;
-    background-image: url(${splash});
-    background-repeat: no-repeat;
-    background-position: center;
-    border-radius: 5px;
-    box-shadow: inset 0 -10px 20px 3px var(--sw-space);
-
-    @media only screen and (min-width: 768px) {
-      height: 29.7rem;
-    }
+  @media only screen and (min-width: 768px) {
+    height: 29.7rem;
+  }
 `;
 
 const Title = styled.h1`
