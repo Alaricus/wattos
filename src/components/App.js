@@ -6,6 +6,7 @@ import Status from './Status';
 import Inventory from './Inventory';
 import ShipInfo from './ShipInfo';
 import splash from '../assets/splash.png';
+import stock from '../assets/data.js';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -68,17 +69,6 @@ const Title = styled.h1`
   }
 `;
 
-const id3D = {
-  'twin-ion-engine-starfighter': 'QGbBq',
-  't-65-x-wing-starfighter': 'HBhDd',
-  'y-wing-starfighter': 'e1bbc',
-  'yt-1300-light-freighter': 'FLfkh',
-  'alpha-class-xg-1-star-wing': 'uksPm',
-  'lambda-class-t-4a-shuttle': 'rdDEP',
-  'rz-1-a-wing-interceptor': 'LaEdm',
-  'b-wing-heavy-assault-starfighter': 'yqoE0',
-};
-
 export const ShipsCtx = createContext([null, () => {}]);
 
 const App = () => {
@@ -87,29 +77,48 @@ const App = () => {
   const [status, setStatus] = useState('loading');
 
   useEffect(() => {
-    getShipData();
+    // getShipData();
+    setShips(stock);
+    setStatus('loaded');
   }, []);
 
-  const getShipData = async () => {
-    try {
-      const response = await fetch('https://demo7475333.mockable.io/spaceships');
-      if (response.ok) {
-        const result = await response.json();
-        const stock = result.products.reduce((acc, cur) => {
-          const id = cur.name.split(' ').join('-').toLowerCase();
-          const ship = cur;
-          ship.id = id;
-          ship.id3d = id3D[id];
-          ship.available = true;
-          return [...acc, ship];
-        }, []);
-        setShips(stock);
-        setStatus('loaded');
-      }
-    } catch (err) {
-      setStatus('failed');
-    }
-  };
+  /**
+   * The commented out parts are from when the data came in via an API.
+   * At some point the API was disabled, so I replicated it (as best I could)
+   * in the new ../assets/data.js file
+   */
+
+  // const id3D = {
+  //   'twin-ion-engine-starfighter': 'QGbBq',
+  //   't-65-x-wing-starfighter': 'HBhDd',
+  //   'y-wing-starfighter': 'e1bbc',
+  //   'yt-1300-light-freighter': 'FLfkh',
+  //   'alpha-class-xg-1-star-wing': 'uksPm',
+  //   'lambda-class-t-4a-shuttle': 'rdDEP',
+  //   'rz-1-a-wing-interceptor': 'LaEdm',
+  //   'b-wing-heavy-assault-starfighter': 'yqoE0',
+  // };
+
+  // const getShipData = async () => {
+  //   try {
+  //     const response = await fetch('https://demo7475333.mockable.io/spaceships');
+  //     if (response.ok) {
+  //       const result = await response.json();
+  //       const stock = result.products.reduce((acc, cur) => {
+  //         const id = cur.name.split(' ').join('-').toLowerCase();
+  //         const ship = cur;
+  //         ship.id = id;
+  //         ship.id3d = id3D[id];
+  //         ship.available = true;
+  //         return [...acc, ship];
+  //       }, []);
+  //       setShips(stock);
+  //       setStatus('loaded');
+  //     }
+  //   } catch (err) {
+  //     setStatus('failed');
+  //   }
+  // };
 
   let content = <Status type={status} />;
 
