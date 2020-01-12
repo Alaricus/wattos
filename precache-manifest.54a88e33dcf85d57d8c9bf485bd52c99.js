@@ -1,19 +1,19 @@
 self.__precacheManifest = [
   {
-    "revision": "0166caf1ebef1c945e693f490dbf1c7a",
-    "url": "/wattos/static/media/yqoE0.0166caf1.png"
+    "revision": "6b8c0d56d8bf1ba44c68",
+    "url": "/wattos/static/css/main.d1bbe47e.chunk.css"
   },
   {
-    "revision": "a3f7c7eaddfb0da816b3",
-    "url": "/wattos/static/css/main.d1bbe47e.chunk.css"
+    "revision": "6b8c0d56d8bf1ba44c68",
+    "url": "/wattos/static/js/main.6b8c0d56.chunk.js"
   },
   {
     "revision": "84e59efe7be3476d8404",
     "url": "/wattos/static/js/runtime~main.84e59efe.js"
   },
   {
-    "revision": "1a77b0e455530ac678ea",
-    "url": "/wattos/static/js/2.1a77b0e4.chunk.js"
+    "revision": "c88199ba401c48ca889a",
+    "url": "/wattos/static/js/2.c88199ba.chunk.js"
   },
   {
     "revision": "6caa575a60e0f09ad0dcb2d4aae38b86",
@@ -44,8 +44,8 @@ self.__precacheManifest = [
     "url": "/wattos/static/media/LaEdm.eb94be9d.png"
   },
   {
-    "revision": "a3f7c7eaddfb0da816b3",
-    "url": "/wattos/static/js/main.a3f7c7ea.chunk.js"
+    "revision": "0166caf1ebef1c945e693f490dbf1c7a",
+    "url": "/wattos/static/media/yqoE0.0166caf1.png"
   },
   {
     "revision": "93f5c8343146120747694c8847144455",
@@ -64,14 +64,6 @@ self.__precacheManifest = [
     "url": "/wattos/static/media/splash.0c324418.png"
   },
   {
-    "revision": "a9bcf765348c213149e81a11af050d92",
-    "url": "/wattos/static/media/aurebesh.a9bcf765.woff2"
-  },
-  {
-    "revision": "bc435f7901191d1e89c7e60498471cd4",
-    "url": "/wattos/static/media/mandalorian.bc435f79.woff2"
-  },
-  {
     "revision": "b51af97f55891b872cf09e2d06f1c81f",
     "url": "/wattos/static/media/darkkatarn.b51af97f.woff2"
   },
@@ -80,11 +72,19 @@ self.__precacheManifest = [
     "url": "/wattos/static/media/titillium.faf27ccf.woff2"
   },
   {
+    "revision": "bc435f7901191d1e89c7e60498471cd4",
+    "url": "/wattos/static/media/mandalorian.bc435f79.woff2"
+  },
+  {
+    "revision": "a9bcf765348c213149e81a11af050d92",
+    "url": "/wattos/static/media/aurebesh.a9bcf765.woff2"
+  },
+  {
     "revision": "929fa32378613637ae384cf5a96eb7fc",
     "url": "/wattos/static/media/starfield.929fa323.jpg"
   },
   {
-    "revision": "0d8dd22ba0b67ad77be7e80dc245da87",
+    "revision": "40d4b2ea45c5d437b9455587805da9a8",
     "url": "/wattos/index.html"
   }
 ];
