@@ -91,7 +91,7 @@ const stock = [
     price: '24,0000 credits',
     techspecs: {
       'Maximum acceleration': '1,400 G',
-      'Passengers': '20+ passengers',
+      Passengers: '20+ passengers',
       'Hyperdrive system': 'SFS S/ig-37',
       Shielding: 'Multiple shield generators',
       Hull: 'Reinforced durasteel / carbon fiber',
@@ -134,7 +134,7 @@ const stock = [
     available: true,
     id: 'b-wing-heavy-assault-starfighter',
     id3d: 'yqoE0',
-  }
+  },
 ];
 
 export default stock;

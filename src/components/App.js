@@ -6,7 +6,7 @@ import Status from './Status';
 import Inventory from './Inventory';
 import ShipInfo from './ShipInfo';
 import splash from '../assets/splash.png';
-import stock from '../assets/data.js';
+import stock from '../assets/data';
 
 const GlobalStyle = createGlobalStyle`
   body {
