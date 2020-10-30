@@ -60,6 +60,7 @@ const ModelName = styled.div`
   min-height: 2.1rem;
 `;
 
+// eslint-disable-next-line react/jsx-props-no-spreading
 const StyledLink = styled(({ isAvailable, ...rest }) => <Link {...rest} />)`
   border-radius: 5px;
   width: 100%;
@@ -77,11 +78,11 @@ const ShipCard = ({ ship }) => {
   const { name, available, id, id3d } = ship;
 
   return (
-    <StyledLink to={`/ship/${id}`} isAvailable={available} >
-      <Card available={available} >
+    <StyledLink to={`/ship/${id}`} isAvailable={available}>
+      <Card available={available}>
         <Thumbnail available={available} id3d={id3d} />
-        <ModelName available={available} >
-          <Text available={available} >{name}</Text>
+        <ModelName available={available}>
+          <Text available={available}>{name}</Text>
         </ModelName>
       </Card>
     </StyledLink>

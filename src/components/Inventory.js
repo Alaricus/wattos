@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { ShipsCtx } from './App';
 import ShipCard from './ShipCard';
 
-
 const Cards = styled.div`
   display: flex;
   box-sizing: border-box;

@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { ShipsCtx } from './App';
@@ -143,7 +143,7 @@ const ShipInfo = ({ match, history }) => {
   const specs = Object.keys(techspecs);
 
   const handlePurchase = () => {
-    const inventory = ships.map((item) => {
+    const inventory = ships.map(item => {
       const current = item;
       if (current.id === id) {
         current.available = false;
@@ -156,7 +156,7 @@ const ShipInfo = ({ match, history }) => {
   };
 
   return (
-    <Fragment>
+    <>
       <Name>{name}</Name>
       <Info>
         <Major>
@@ -165,10 +165,19 @@ const ShipInfo = ({ match, history }) => {
           <Model id={id} id3d={id3d} />
           <Details>
             <Picture src={images[id3d]} alt={name} />
-            <p>Manufacturer: {manufacturer}</p>
-            <p>Class: {shipClass}</p>
-            <p>Price: {price || 'Come in person for an amazing discount!'}</p>
-            <Purchase type="button" available={available} onClick={handlePurchase} >
+            <p>
+              Manufacturer:
+              {manufacturer}
+            </p>
+            <p>
+              Class:
+              {shipClass}
+            </p>
+            <p>
+              Price:
+              {price || 'Come in person for an amazing discount!'}
+            </p>
+            <Purchase type="button" available={available} onClick={handlePurchase}>
               { available ? 'Purchase' : 'Sold Out' }
             </Purchase>
           </Details>
@@ -189,7 +198,7 @@ const ShipInfo = ({ match, history }) => {
           showConfirmation && <Confirmation name={name} price={price} history={history} />
         }
       </Info>
-    </Fragment>
+    </>
   );
 };
 

@@ -1,24 +1,27 @@
 {
   "name": "wattos",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "homepage": "https://alaricus.github.io/wattos",
   "dependencies": {
-    "gh-pages": "^2.2.0",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-scripts": "4.0.0",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.3.0",
-    "styled-components": "^4.4.1"
+    "styled-components": "^5.2.0"
   },
   "devDependencies": {
-    "eslint-config-airbnb": "^18.0.1",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react-hooks": "^2.3.0"
+    "eslint": "^7.12.1",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "gh-pages": "^3.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
-    "predeploy": "npm run build && cp build/index.html build/404.html",
+    "predeploy": "yarn build && cp build/index.html build/404.html",
     "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",

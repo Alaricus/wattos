@@ -25,7 +25,10 @@
       "aspects": [ "noHref", "invalidHref", "preferButton" ]
     }],
     "react/prop-types": "off",
-    "react-hooks/rules-of-hooks": "error"
+    "react-hooks/rules-of-hooks": "error",
+    "arrow-parens": ["error", "as-needed"],
+    "import/no-cycle": 0,
+    "react/jsx-props-no-spreading": 0
   },
   "env": {
     "browser": true,

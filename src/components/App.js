@@ -10,7 +10,7 @@ import stock from '../assets/data';
 
 const GlobalStyle = createGlobalStyle`
   body {
-    font-family: ${props => (props.language)};
+    font-family: ${props => props.language};
   }
 `;
 
@@ -140,7 +140,7 @@ const App = () => {
     content = <Status type={status} />;
   }
 
-  const changeLanguage = (e) => {
+  const changeLanguage = e => {
     setLanguage(e.target.dataset.lang);
   };
 
